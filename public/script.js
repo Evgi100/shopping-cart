@@ -1,7 +1,7 @@
 // an array with all of our cart items
 var cart = [];
 var source = $('#shopCart-template').html();
-var template = Handlebars.compile(source)
+var template = Handlebars.compile(source);
 
 // Update the view of shooping cart with the added items
 var updateCart = function () {
@@ -45,11 +45,11 @@ var clearCart = function () {
 }
 
 //Remove each selected item
+
 $('.cart-list').on('click','.removeItem',function(){
  index= $(this).closest('.cart-list').index();
  cart.splice(index,1);
  updateCart();
-  
 });
 
 
