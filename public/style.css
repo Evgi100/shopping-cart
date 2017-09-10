@@ -103,3 +103,11 @@ body {
 .clear-cart {
   width: 100%;
 }
+
+.add-product-input-form {
+  background-color: white;
+  /* border: 0.25px solid darkblue; */
+  padding: 10px;
+  margin-bottom: 50px;
+  box-shadow: 2px 2px 2px #B3B3B3;
+}
