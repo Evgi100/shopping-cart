@@ -45,7 +45,7 @@ var clearCart = function () {
 }
 
 //Remove each selected item
-$('.cart-title').on('click','.removeItem',function(){
+$('.cart-list').on('click','.removeItem',function(){
  index= $(this).closest('.cart-list').index();
  cart.splice(index,1);
  updateCart();
