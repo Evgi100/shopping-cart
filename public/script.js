@@ -1,7 +1,7 @@
 // an array with all of our cart items
 var cart = [];
 var source = $('#shopCart-template').html();
-var template = Handlebars.compile(source)
+var template = Handlebars.compile(source);
 
 // Update the view of shooping cart with the added items
 var updateCart = function () {

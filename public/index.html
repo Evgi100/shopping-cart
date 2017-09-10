@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
@@ -7,12 +8,14 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Shopping Cart!</title>
 </head>
+
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -29,13 +32,39 @@
             <a href="#" class="view-cart" data-toggle="dropdown" role="button">Shopping Cart <i class="fa fa-shopping-cart"></i></a>
           </li>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
   </nav>
+
 
   <div class="page-header">
     <h1>SHOPPING CART</h1>
   </div>
+
+
+  <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 add-product-input-form">
+        <form action="">
+          <div class="form-group">
+            <label for="name-input">Product name:</label>
+            <input type="text" id="name-input" placeholder="Name of product" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="price-input">Product price:</label>
+            <input type="text" id="price-input" placeholder="Price of product" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="img-input">Product image url:</label>
+            <input type="text" id="img-input" placeholder="Image URL" class="form-control">
+          </div>
+          <button type="submit" id="input-submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  
 
   <div class="container">
     <div class="shopping-cart">
@@ -46,10 +75,13 @@
     </div>
 
 
+
+
+
     <div class="row">
       <div class="col-md-4">
         <div class="card-container">
-          <div class="card item"  data-name="glass" data-price="68">
+          <div class="card item" data-name="glass" data-price="68">
             <div class="pricebox">
               <p class="price"> $68 </p>
             </div>
@@ -95,7 +127,7 @@
         </div>
       </div>
 
-    
+
     </div>
     <div class="row">
       <div class="col-md-4">
@@ -147,14 +179,36 @@
       </div>
     </div>
   </div>
+
   <script id="shopCart-template" type="text/x-handlebars-template">
     <p>
       <span>{{name}} - {{price}} $</span>
     </p>
   </script>
-    <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
+
+  <script id="addProduct-template" type="text/x-handlebars-template">
+    <div class="col-md-4">
+      <div class="card-container">
+        <div class="card item" item data-name="{{name}}" data-price="{{price}}">
+          <div class="pricebox">
+            <p class="price"> ${{price}} </p>
+          </div>
+          <div class="buybox">
+            <p class="add-to-cart"> ADD TO CART </p>
+          </div>
+          <div class="card-inner">
+            <img src="{{img}}" class="proimage">
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="handlebars/dist/handlebars.min.js"></script>
   <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" src="addItem.js"></script>
 </body>
+
 </html>
