@@ -102,6 +102,7 @@ body {
 
 .clear-cart {
   width: 100%;
+  color:red;
 }
 
 .add-product-input-form {
@@ -111,3 +112,17 @@ body {
   margin-bottom: 50px;
   box-shadow: 2px 2px 2px #B3B3B3;
 }
+
+.btn-prepend{
+  color:red;
+  font-size: 20px;
+}
+
+.btn-append{
+  color:red;
+  font-size: 20px;
+}
+
+
+
+

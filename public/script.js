@@ -3,54 +3,65 @@ var cart = [];
 var source = $('#shopCart-template').html();
 var template = Handlebars.compile(source);
 
+
 // Update the view of shooping cart with the added items
 var updateCart = function () {
   $('.cart-list').empty();
-  total=0;
-for (i=0;i<cart.length;i++){
-  var newHTML = template(cart[i]);
-  $('.cart-list').append(newHTML);
-  $('.cart-list').append('<p><button type="button" class="btn btn-primary btn-sm removeItem">Remove Item</button></p>');
-  total +=cart[i].price;
+  total = 0;
+  for (i = 0; i < cart.length; i++) {
+    var newHTML = template(cart[i]);
+    $('.cart-list').append(newHTML);
+    $('.cart-list').append('<p><button type="button" class="btn btn-primary btn-sm removeItem">Remove Item</button></p>');
+    total += cart[i].price*cart[i].quantity;
   }
-$('.total').empty();
-$('.total').html(total);
+  $('.total').empty();
+  $('.total').html(total);
 };
 
 
 
 // Add new item to the cart array
-var addItem = function (item) {
-  var duplicate=false 
-  for (i=0;i<cart.length;i++){
-    if (cart[i].name===item.name){
-      duplicate=true;
+var addItem = function (item,price) {
+  var duplicate = false
+  for (i = 0; i < cart.length; i++) {
+    if (cart[i].name === item.name) {
+      duplicate = true;
       break;
     }
   }
-  if (duplicate){
+  if (duplicate) {
     cart[i].quantity++;
-  }else {
-    item.quantity=1;
+  } else {
+    item.quantity = 1;
     cart.push(item)
   }
 }
-   
-    
+
+
 //clear the cart view and array
 var clearCart = function () {
-  cart=[];
+  cart = [];
   $('.cart-list').empty();
   $('.total').html('0');
 }
 
 //Remove each selected item
-
-$('.cart-list').on('click','.removeItem',function(){
- index= $(this).closest('.cart-list').index();
- cart.splice(index,1);
- updateCart();
+$('.cart-list').on('click', '.removeItem', function () {
+  index = $(this).closest('.item-name-price').data();
+  cart.splice(index, 1);
+  updateCart();
 });
+
+// Decrease item quiantity
+var removeItem=function(itemToRemove){
+  for (i = 0; i < cart.length; i++ ) {
+    if (cart[i].name === itemToRemove.name && cart[i].quantity>1) {
+      cart[i].quantity -= 1;
+      break;
+    }
+  }
+  updateCart();
+}
 
 
 //Toggle the shopping-cart on/off
@@ -61,7 +72,7 @@ $('.view-cart').on('click', function () {
 
 // get the "item" object from the page
 $('.add-to-cart').on('click', function () {
- var item=$(this).closest('.item').data();
+  var item = $(this).closest('.item').data();
   addItem(item);
   updateCart();
 });
@@ -69,6 +80,18 @@ $('.add-to-cart').on('click', function () {
 // clear the cart array and update the view
 $('.clear-cart').on('click', function () {
   clearCart();
+});
+
+// Decrease item quiantity
+$('.cart-list').on('click', '.btn-prepend', function () {
+  itemToRemove = $(this).siblings('.item-name-cart').data();
+  removeItem(itemToRemove);
+});
+
+$('.cart-list').on('click', '.btn-append', function () {
+  var item =$(this).siblings('.item-name-cart').data();
+  addItem(item);
+  updateCart();
 });
 
 

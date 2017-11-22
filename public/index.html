@@ -81,7 +81,7 @@
     <div class="row">
       <div class="col-md-4">
         <div class="card-container">
-          <div class="card item" data-name="glass" data-price="68">
+          <div class="card item" item data-name="glass" data-price="68">
             <div class="pricebox">
               <p class="price"> $68 </p>
             </div>
@@ -181,13 +181,18 @@
   </div>
 
   <script id="shopCart-template" type="text/x-handlebars-template">
-      <span class="item-name-cart">{{name}}({{quantity}})</span> - <span class="item-name-price">{{price}}</span>
+    <div class="CartData">
+      <span class="item-name-cart" data-name={{name}} data-price={{price}}>{{name}}({{quantity}})
+      </span> - <span class="item-name-price">${{price}}</span>
+      <button type="button"class="btn btn-prepend"> - </button>
+      <button type="button"class="btn btn-append"> + </button>
+  </div>
   </script>
 
   <script id="addProduct-template" type="text/x-handlebars-template">
     <div class="col-md-4">
       <div class="card-container">
-        <div class="card item" item data-name="{{name}}" data-price="{{price}}">
+        <div class="card item" item data-name="{{name}}" item data-price="{{price}}">
           <div class="pricebox">
             <p class="price"> ${{price}} </p>
           </div>
